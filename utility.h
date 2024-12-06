@@ -28,17 +28,20 @@ double random_double(double min, double max);
 // Function to initialize all particles
 // Sets their positions within the search space bounds and assigns small random velocities
 // The glboal best position and value are also updated if the initialized particle has better fitness
-void initialize_particles(Particle *particles, int NUM_PARTICLES, int NUM_VARIABLES, Bound *bounds, ObjectiveFunction objective_function, double *global_best_position, double *global_best_value);
+
+//CHATGPT was used to help come up with function parameters
+void create_p(Particle *particles, int NUM_PARTICLES, int NUM_VARIABLES, Bound *bounds, ObjectiveFunction objective_function, double *global_best_position, double *global_best_value);
 
 // Updates the velocities and positions of particles
 // Adjusts based on personal and global bests using the PSO formula
 // Also clamps the velocities to prevent "too fast" movements, which could break convergence
 // CHATGPT was used to help come up with this idea of clamping velocities
-void update_particles(Particle *particles, int NUM_PARTICLES, int NUM_VARIABLES, Bound *bounds,
+
+//CHATGPT was used to help come up with function parameters
+void repos_p(Particle *particles, int NUM_PARTICLES, int NUM_VARIABLES, Bound *bounds,
                       ObjectiveFunction objective_function, double *global_best_position, double *global_best_value, double w, double c1, double c2);
 
 // Free the dynamically allocated memory for particle attributes
-// It is important to avoid memory leaks because we're using malloc() for arrays
 void free_particles(Particle *particles, int NUM_PARTICLES);
 
 // The main PSO function
@@ -50,4 +53,4 @@ void free_particles(Particle *particles, int NUM_PARTICLES);
 double pso(ObjectiveFunction objective_function, int NUM_VARIABLES, Bound *bounds, int NUM_PARTICLES, int MAX_ITERATIONS, double *best_position);
 
 
-#endif // UTILITY_H
+#endif 
